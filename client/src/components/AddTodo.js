@@ -1,4 +1,5 @@
 import { useState } from "react";
+import "../styles/App.scss";
 
 const AddTodo = ({ addItem }) => {
     // 사용자 입력을 저장할 객체
@@ -26,7 +27,7 @@ const AddTodo = ({ addItem }) => {
                 onChange={(e) => setTodoItem({ title: e.target.value })}
                 onKeyPress={onKeyPress}
             />
-            <button onClick={onButtonClick}>ADD</button>
+            <button onClick={onButtonClick}>+</button>
         </div>
     );
 };

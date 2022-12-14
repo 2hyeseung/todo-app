@@ -1,4 +1,5 @@
 import { useState } from "react";
+import "../styles/App.scss";
 
 const Todo = ({ item, deleteItem }) => {
     // console.log(item); // { id: 1, title: 'todo1', done: false, }
@@ -44,28 +45,34 @@ const Todo = ({ item, deleteItem }) => {
 
     return (
         <div className="Todo">
-            <input
-                type="checkbox"
-                id={`todo${id}`}
-                name={`todo${id}`}
-                value={`todo${id}`}
-                defaultChecked={done}
-                onChange={checkboxEventHandler}
-            />
-            {readOnly ? (
-                <label htmlFor={`todo${id}`} onClick={offReadOnlyMode}>
-                    {todoItem.title}
-                </label>
-            ) : (
+            <div className="Left">
                 <input
-                    type="text"
-                    value={todoItem.title}
-                    onChange={editEventHandler}
-                    onKeyPress={enterKeyEventHandler}
-                    readOnly={readOnly}
+                    className="Checkbox"
+                    type="checkbox"
+                    id={`todo${id}`}
+                    name={`todo${id}`}
+                    value={`todo${id}`}
+                    defaultChecked={done}
+                    onChange={checkboxEventHandler}
                 />
-            )}
-            <button onClick={onDeleteBtnClick}>DELETE</button>
+                {readOnly ? (
+                    <label htmlFor={`todo${id}`} onClick={offReadOnlyMode}>
+                        {todoItem.title}
+                    </label>
+                ) : (
+                    <input
+                        className="TodoEdit"
+                        type="text"
+                        value={todoItem.title}
+                        onChange={editEventHandler}
+                        onKeyPress={enterKeyEventHandler}
+                        readOnly={readOnly}
+                    />
+                )}
+            </div>
+            <div className="Right">
+                <button onClick={onDeleteBtnClick}>🗑️</button>
+            </div>
         </div>
     );
 };

@@ -1,0 +1,29 @@
+$color-main: rgb(79, 136, 189);
+$color-darkgray: rgb(161, 161, 161);
+$color-gray: rgb(243, 243, 243);
+$color-white: white;
+
+$input-width: 70%;
+$input-height: 30px;
+$size-20: 20px;
+
+@mixin margin {
+    margin: 30px 10px 30px 10px;
+}
+
+@mixin underline {
+    border-left-width: 0;
+    border-right-width: 0;
+    border-top-width: 0;
+    border-bottom-width: 1;
+}
+
+@mixin button($c, $bc, $w) {
+    color: $c;
+    background-color: $bc;
+    border-style: none;
+    border-radius: 5px;
+    width: $w;
+    height: $w;
+    cursor: pointer;
+}
