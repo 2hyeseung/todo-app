@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import "../styles/App.scss";
 
 const AddTodo = ({ addItem }) => {
@@ -14,13 +14,19 @@ const AddTodo = ({ addItem }) => {
     };
     const onButtonClick = () => {
         // props로 받아온 addItem 함수 실행
-        addItem(todoItem); // {title: 'input입력값'}
-        setTodoItem({ title: "" }); // input 초기화
+        todoItem.title.trim().length > 0 && addItem(todoItem);
+        // input 초기화
+        setTodoItem({ title: "" });
     };
+    const inputRef = useRef();
+    useEffect(() => {
+        inputRef.current.focus();
+    }, [todoItem]);
 
     return (
         <div className="AddTodo">
             <input
+                ref={inputRef}
                 type="text"
                 placeholder="Add your new Todo"
                 value={todoItem.title}
