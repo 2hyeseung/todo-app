@@ -3,7 +3,7 @@ import "../styles/App.scss";
 
 const Todo = ({ item, deleteItem }) => {
     // console.log(item); // { id: 1, title: 'todo1', done: false, }
-    const { id, title, done } = item;
+    const { id, done } = item;
     const [todoItem, setTodoItem] = useState(item);
     const [readOnly, setReadOnly] = useState(true);
 
