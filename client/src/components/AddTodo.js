@@ -18,6 +18,7 @@ const AddTodo = ({ addItem }) => {
         // input 초기화
         setTodoItem({ title: "" });
     };
+
     const inputRef = useRef();
     useEffect(() => {
         inputRef.current.focus();

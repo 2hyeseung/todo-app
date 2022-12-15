@@ -1,22 +1,19 @@
 import { useState } from "react";
+import axios from "axios";
 import "../styles/App.scss";
 
-const Todo = ({ item, deleteItem }) => {
-    // console.log(item); // { id: 1, title: 'todo1', done: false, }
+const Todo = ({ item, deleteItem, updateItem }) => {
     const { id, done } = item;
     const [todoItem, setTodoItem] = useState(item);
     const [readOnly, setReadOnly] = useState(true);
-
     const onDeleteBtnClick = () => {
         deleteItem(todoItem);
     };
 
     // title input 커서가 깜빡인다고 수정이 가능한 것은 아님
     // 사용자가 키보드 입력할 때마다 todoItem의 title을 새 값으로 변경
-    const editEventHandler = (e) => {
-        // rest: id, done 정보
-        const { title, ...rest } = todoItem; // { id: 1, title: 'todo1', done: false, }
-
+    const editEventHandler = async (e) => {
+        const { title, ...rest } = todoItem;
         setTodoItem({
             title: e.target.value,
             ...rest,
@@ -29,18 +26,20 @@ const Todo = ({ item, deleteItem }) => {
     };
 
     // title input에서 enter 키 입력시 (title 수정을 완료했다!!): readOnly state를 true로 변경
-    const enterKeyEventHandler = (e) => {
+    const enterKeyEventHandler = async (e) => {
         if (e.key === "Enter") {
             setReadOnly(true);
+            updateItem(todoItem);
         }
     };
 
-    const checkboxEventHandler = (e) => {
+    const checkboxEventHandler = async (e) => {
         const { done, ...rest } = todoItem;
         setTodoItem({
             done: !done,
             ...rest,
         });
+        updateItem(todoItem);
     };
 
     return (
