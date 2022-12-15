@@ -3,7 +3,7 @@
 ## StartProject
 
 ```
-git clone [url]
+git clone https://github.com/2hyeseung/todo-app.git
 cd server/
 npm i
 node app.js
